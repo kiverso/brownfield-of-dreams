@@ -5,6 +5,5 @@ class Api::V1::TutorialsController < ApplicationController
 
   def show
     render json: Tutorial.find(params[:id])
-    #this is a comment
   end
 end
