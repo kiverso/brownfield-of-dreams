@@ -4,11 +4,9 @@ rvm:
 addons:
   postgresql: 9.6
   chrome: stable
-dist: trusty
+dist: xenial
 before_install:
 - gem install bundler
-before_script:
-- bundle exec rails runner "Webdrivers::Chromedriver.update"
 script:
 - yarn
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
