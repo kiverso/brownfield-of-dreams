@@ -10,4 +10,14 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+  <% if current_user.token %>
+    <section id='github'>
+      <h1>Github</h1>
+      <div id='user-repos'>
+        <% current_user.find_repos.each do |repo| %>
+          <%= link_to repo.name, repo.url %>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
 </section>

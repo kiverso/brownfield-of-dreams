@@ -1,8 +1,18 @@
 class GithubService
-  require 'pry'; binding.pry
+
+  def find_repos(user)
+    repos = get_json('user/repos', user)
+    binding.pry
+  end
+
+  private
+
+  def get_json(url, user)    
+    response = conn.get(url, nil, {Authorization: "token #{user.token}"})
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
   def conn
-    Faraday.get(url: "https://api.github.com/user/repos") do |f|
-      f.headers: ['Authorization'] = 'token 6388d169a8e57527eaab141072d11b649dec2262'
-    end
+    Faraday.new(url: "https://api.github.com")
   end
 end
