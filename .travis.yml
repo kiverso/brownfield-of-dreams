@@ -7,6 +7,11 @@ addons:
 dist: trusty
 before_install:
 - gem install bundler
+run:
+  name: Update Chromedriver
+  command: |
+        sudo apt-get update
+        sudo apt-get install google-chrome-stable
 script:
 - yarn
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
@@ -17,4 +22,3 @@ deploy:
     secure: FsXxmD59e0PFjYNWwUfKrgIRyCgFxKX+RZphF7wTzde8xECSNVX1+gJxlPvNvlvCGfqt3au5I8ozkK0ca4sPHjymh4NH8OngVKSdM5zgzVe4FziHmzrckjkyQBSuY9kg0EByZ69uU5Icmdsvt5pO/csf5H0XuYIU2aKhnMvvePoq5i76e7kAZLOu8uC8RdiBDwJ7mzb7D9k+B5zT8QKol1T7HARfxeWwnJcQtNTqKGKRHFtnOrYVIyw9FIKpygWY5s/qK/NL5VmIzbk/Q2NYBsq0rvn9jiy+7kUYc/Cv+qJhKW8Wdix6JiMQyWFPTpFe7Ch76RN8XDxu+Iwpeuxrkx1neGmLBwASg+F1O8E6RHOEBnnRkstc8sowwkKUCsKnKdLHnhiCgx1GCeNemS59wvo1AKV1vvkzjUpuwO+BB27RAKfyq5oV4p71Ct6vq/Y6srWjHAD2cWhFMP2UF0APXMw833xqp85IH8VVOCc1OqxbQwfxI2XdphJ7YgdQLYRlRe/95RGNTJpG2NCQyhyJUOlv47/f2+RK5S4e5V0bX4EDoreYwFCi8Fo/abQ6ENutySoPs/WLCJihv+CKwfgAc2jxwlMi26AFvSmpamfq0qGMqDOZ2xDhjpwdbNn8T6T+ydo+HOmRocgGkh3VokwSiaQQR0YDux6opFjuBZMkxKM=
   app: sleepy-brushlands-02321
   run: rails db:migrate
-
