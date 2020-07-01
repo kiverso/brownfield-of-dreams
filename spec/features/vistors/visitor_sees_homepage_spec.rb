@@ -25,21 +25,14 @@ describe 'Visitor' do
 
     it 'will not show classroom material to a visitor' do
       tutorial1 = create(:classroom_tutorial)
-      tutorial2 = create(:tutorial)
 
       video1 = create(:video, tutorial_id: tutorial1.id)
       video2 = create(:video, tutorial_id: tutorial1.id)
-      video3 = create(:video, tutorial_id: tutorial2.id)
-      video4 = create(:video, tutorial_id: tutorial2.id)
 
       visit root_path
-      expect(page).to have_css('.tutorial', count: 1)
 
       expect(page).to_not have_content(tutorial1.title)
       expect(page).to_not have_content(tutorial1.description)
-      
-      expect(page).to have_content(tutorial2.title)
-      expect(page).to have_content(tutorial2.description)
     end
 
     it 'will show classroom material to a logged in user' do
