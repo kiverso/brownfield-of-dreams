@@ -4,7 +4,7 @@ class Tutorial < ApplicationRecord
   accepts_nested_attributes_for :videos
 
   def self.authorized_for_viewer(user)
-    if user == nil
+    if user.nil?
       Tutorial.where(classroom: false)
     else
       Tutorial.all
