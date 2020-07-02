@@ -10,6 +10,10 @@ class User < ApplicationRecord
 
   def find_repos
     github_service = GithubService.new
-    github_service.find_repos(self)
+    repo_data = github_service.find_data(self, 'repos')
+    repos = repo_data.map do |repo|
+      Repo.new(repo[:name], repo[:html_url])
+    end
+    repos.first(5)
   end
 end

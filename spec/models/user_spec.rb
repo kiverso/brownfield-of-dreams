@@ -26,4 +26,14 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+  describe 'instance methods' do
+    it "find_repos" do
+      user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0, token: ENV["github_api_token-k"])
+
+      expect(user.find_repos.count).to eq(5)
+      user.find_repos.each do |repo|
+        expect(repo).to be_an_instance_of(Repo)
+      end
+    end
+  end
 end
