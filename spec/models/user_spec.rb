@@ -35,5 +35,13 @@ RSpec.describe User, type: :model do
         expect(repo).to be_an_instance_of(Repo)
       end
     end
+
+    it 'find_followers' do
+      user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0, token: ENV["github_api_token_c"])
+
+      user.find_followers.each do |follower|
+        expect(follower).to be_an_instance_of(Follower)
+      end
+    end
   end
 end
