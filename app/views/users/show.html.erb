@@ -15,7 +15,9 @@
       <h1>Github</h1>
       <div id='user-repos'>
         <% current_user.find_repos.each do |repo| %>
-          <%= link_to repo.name, repo.url %>
+          <div id='repo'>
+            <%= link_to repo.name, repo.url %>
+          </div>
         <% end %>
       </div>
     </section>

@@ -6,12 +6,14 @@ RSpec.describe "As a logged in user, when i click on the github section" do
   end
   it 'can view 5 repos from their github account' do
     visit '/dashboard'
+
+    expect(page).to have_css('.repo', count: 5)
     expect(page).to have_content('Github')
-    expect(page).to have_link('Neos')
-    expect(page).to have_link('Brownfield of Dreams')
-    expect(page).to have_link('Here Be Dragons')
-    expect(page).to have_link('Sweater Weather')
-    expect(page).to have_link('Something Else')
+    expect(page).to have_link('monster_shop_2003')
+    expect(page).to have_link('futbol')
+    expect(page).to have_link('adopt_dont_shop_2003')
+    expect(page).to have_link('b2-mid-mod')
+    expect(page).to have_link('backend_module_0_capstone')
   end
 end
 #As a logged in user
