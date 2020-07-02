@@ -7,7 +7,7 @@ RSpec.describe "As a logged in user, when i click on the github section" do
   it 'can view 5 repos from their github account' do
     visit '/dashboard'
 
-    expect(page).to have_css('.repo', count: 5)
+    expect(page).to have_css('#repo', count: 5)
     expect(page).to have_content('Github')
     expect(page).to have_link('monster_shop_2003')
     expect(page).to have_link('futbol')
@@ -16,7 +16,3 @@ RSpec.describe "As a logged in user, when i click on the github section" do
     expect(page).to have_link('backend_module_0_capstone')
   end
 end
-#As a logged in user
-# When I visit /dashboard
-# Then I should see a section for "Github"
-# And under that section I should see a list of 5 repositories with the name of each Repo linking to the repo on Github
