@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe "As a logged in user, when i click on the github section" do
   before(:each) do
-    @happy = User.create!(email: 'happymadison@example.com', first_name: 'Happy', last_name: 'Gilmore', password: '12345', token: ENV["github_api_token-k"])
+    @happy = User.create!(email: 'happymadison@example.com', first_name: 'Happy', last_name: 'Gilmore', password: '12345', token: ENV["github_api_token_k"])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@happy)
   end
   it 'can view 5 repos from their github account' do
