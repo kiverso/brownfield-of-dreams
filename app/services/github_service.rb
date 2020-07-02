@@ -1,7 +1,6 @@
 class GithubService
 
   def find_data(user, data)
-    # binding.pry
     repos = get_json("user/#{data}", user)
   end
 
