@@ -13,18 +13,18 @@
   <% if current_user.token %>
     <section id='github'>
       <h1>Github</h1>
-      <div id='user-followers'>
-        <% current_user.find_followers.each do |follower| %>
-          <div id='follower'>
-            <%= link_to follower.name, follower.url %>
-          </div>
-        <% end %>
         <div id='user-repos'>
           <% current_user.find_repos.each do |repo| %>
-          <div id='repo'>
-            <%= link_to repo.name, repo.url %>
+          <div id=<%="repo"%>>
+            <%= link_to repo.name, repo.url, id: 'repository' %>
           </div>
           <% end %>
+          <div id='user-followers'>
+            <% current_user.find_followers.each do |follower| %>
+            <div id='follower'>
+              <%= link_to follower.name, follower.url, id: 'follow' %>
+            </div>
+            <% end %>
         </div>
       </div>
     </section>
