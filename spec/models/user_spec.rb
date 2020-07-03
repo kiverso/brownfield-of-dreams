@@ -41,6 +41,8 @@ RSpec.describe User, type: :model do
 
       user.find_followers.each do |follower|
         expect(follower).to be_an_instance_of(Follower)
+        expect(follower.name).to_not be_nil
+        expect(follower.url).to_not be_nil
       end
     end
   end

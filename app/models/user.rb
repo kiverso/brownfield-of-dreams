@@ -21,7 +21,7 @@ class User < ApplicationRecord
     github_service = GithubService.new
     follower_data = github_service.find_data(self, 'followers')
     followers = follower_data.map do |follower|
-      Follower.new(follower[:name], follower[:html_url])
+      Follower.new(follower[:login], follower[:html_url])
     end
     followers
   end
