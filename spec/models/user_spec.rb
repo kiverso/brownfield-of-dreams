@@ -40,9 +40,19 @@ RSpec.describe User, type: :model do
       user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0, token: ENV["github_api_token_c"])
 
       user.find_followers.each do |follower|
-        expect(follower).to be_an_instance_of(Follower)
+        expect(follower).to be_an_instance_of(Follow)
         expect(follower.name).to_not be_nil
         expect(follower.url).to_not be_nil
+      end
+    end
+
+    it 'find_followings' do
+      user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0, token: ENV["github_api_token_c"])
+
+      user.find_following.each do |follow|
+        expect(follow).to be_an_instance_of(Follow)
+        expect(follow.name).to_not be_nil
+        expect(follow.url).to_not be_nil
       end
     end
   end
