@@ -5,17 +5,21 @@ class Admin::TutorialsController < Admin::BaseController
 
   def create
     if id = params[:tutorial][:playlist_id]
-
       service = YoutubeService.new
       playlist_data = service.import_playlist(id)
-      playlist_video_data = service.import_playlist_items(id)
+      @playlist_video_data = service.import_playlist_items(id, nil)
 
       @tutorial = Tutorial.create!(title: playlist_data[:title], description: playlist_data[:descripiton], thumbnail: playlist_data[:thumbnails][:default][:url], playlist_id: id)
-      playlist_video_data[:items].each do |video|
-        @tutorial.import_video(video)
+      @playlist_video_data[:items].each {|video| @tutorial.import_video(video)}
+
+      while @playlist_video_data[:nextPageToken]
+        @playlist_video_data = service.import_playlist_items(id, @playlist_video_data[:nextPageToken])
+        @playlist_video_data[:items].each {|video| @tutorial.import_video(video)}
       end
+
       if @tutorial.save
         flash[:success] = "Successfully created tutorial. #{view_context.link_to 'View it here.', tutorial_path(@tutorial)}"
+        redirect_to admin_dashboard_path
       end
     end
   end
