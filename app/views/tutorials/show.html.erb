@@ -6,7 +6,9 @@
   <ul>
     <% @facade.videos.each do |video| %>
       <li>
-        <h3><%= link_to video.title, tutorial_path(video_id: video.id), class: "show-link", id: video.position %></h3>
+        <section id=<%="video-#{video.id}"%>
+          <h3><%= link_to video.title, tutorial_path(video_id: video.id), class: "show-link", id: video.position %></h3>
+        </section>
       </li>
     <% end %>
   </ul>

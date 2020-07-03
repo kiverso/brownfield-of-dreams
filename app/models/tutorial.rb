@@ -10,4 +10,8 @@ class Tutorial < ApplicationRecord
       Tutorial.all
     end
   end
+
+  def import_video(video)
+    videos.create!(title: video[:snippet][:title], description: video[:snippet][:description], video_id: video[:snippet][:resourceId][:videoId], thumbnail: video[:snippet][:thumbnails][:default][:url], position: video[:snippet][:position])
+  end
 end
