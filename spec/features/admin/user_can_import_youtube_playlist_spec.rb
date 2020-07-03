@@ -11,11 +11,13 @@ RSpec.describe 'as an admin' do
 
     click_link('Import YouTube Playlist')
 
-    fill_in'tutorial[playlist_id]', with: 'RDhV0te5pf0NE'
+    expect(current_path).to eq(admin_playlist_new_path)
+    fill_in'tutorial[playlist_id]', with: 'PLjIwAcWBM5nRdYCmZLB0pCeA3ioHetoFp'
     click_on('Submit')
 
-    expect(current_path).to eq(admin_playlist_path)
-    expect(page).to have_content('Successfully created tutorial. View it here.')
+    expect(page).to have_content('Successfully created tutorial.')
+
+    expect(current_path).to eq(admin_dashboard_path)
 
     click_link('View it here')
 
@@ -23,20 +25,20 @@ RSpec.describe 'as an admin' do
 
     expect(current_path).to eq(tutorial_path(tutorial))
 
+    expect(page).to have_css('.show-link', count: 56)
+
     videos = tutorial.videos
+
+    video = videos[0]
+
+    video1 = videos[-1]
+
+    within "#video-1" do
+      expect(page).to have_link(video.title)
+    end
+
+    within "#video-55" do
+      expect(page).to have_link(video1.title)
+    end
   end
 end
-# As an admin
-# When I visit '/admin/tutorials/new'
-# Then I should see a link for 'Import YouTube Playlist'
-# When I click 'Import YouTube Playlist'
-# Then I should see a form
-#
-# And when I fill in 'Playlist ID' with a valid ID
-# Then I should be on '/admin/dashboard'
-# And I should see a flash message that says 'Successfully created tutorial. View it here.'
-# And 'View it here' should be a link to '/tutorials/:id'
-# And when I click on 'View it here'
-# Then I should be on '/tutorials/:id'
-# And I should see all videos from the YouTube playlist
-# And the order should be the same as it was on YouTube
