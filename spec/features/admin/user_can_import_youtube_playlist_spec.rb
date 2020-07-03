@@ -31,14 +31,12 @@ RSpec.describe 'as an admin' do
 
     video = videos[0]
 
-    video1 = videos[-1]
-
-    within "#video-1" do
+    first(".show-link") do
       expect(page).to have_link(video.title)
     end
 
     within "#video-55" do
-      expect(page).to have_link(video1.title)
+      expect(page).to have_link("Phish - Kung - Live in Brooklyn")
     end
   end
 end
