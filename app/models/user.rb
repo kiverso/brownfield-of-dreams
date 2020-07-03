@@ -16,4 +16,13 @@ class User < ApplicationRecord
     end
     repos.first(5)
   end
+
+  def find_followers
+    github_service = GithubService.new
+    follower_data = github_service.find_data(self, 'followers')
+    followers = follower_data.map do |follower|
+      Follower.new(follower[:login], follower[:html_url])
+    end
+    followers
+  end
 end

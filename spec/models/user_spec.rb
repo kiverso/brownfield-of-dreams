@@ -28,11 +28,21 @@ RSpec.describe User, type: :model do
   end
   describe 'instance methods' do
     it "find_repos" do
-      user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0, token: ENV["github_api_token_k"])
+      user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0, token: ENV["github_api_token_c"])
 
       expect(user.find_repos.count).to eq(5)
       user.find_repos.each do |repo|
         expect(repo).to be_an_instance_of(Repo)
+      end
+    end
+
+    it 'find_followers' do
+      user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0, token: ENV["github_api_token_c"])
+
+      user.find_followers.each do |follower|
+        expect(follower).to be_an_instance_of(Follower)
+        expect(follower.name).to_not be_nil
+        expect(follower.url).to_not be_nil
       end
     end
   end
