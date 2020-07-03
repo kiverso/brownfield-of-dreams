@@ -1,4 +1,4 @@
-class Follower
+class Follow
   attr_reader :name, :url
   def initialize(name, url)
     @name = name
