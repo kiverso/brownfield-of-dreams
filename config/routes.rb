@@ -43,6 +43,8 @@ Rails.application.routes.draw do
     resources :videos, only: [:show, :index]
   end
 
+  get 'auth/github', as: 'github'
+  get '/auth/github/callback', to: 'sessions#update'
 
   resources :user_videos, only:[:create, :destroy]
 end
