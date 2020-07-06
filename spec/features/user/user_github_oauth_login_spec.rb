@@ -6,10 +6,19 @@ RSpec.describe 'as a logged in user' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
   it 'I can connect with my github account' do
-
     visit dashboard_path
 
-    # expect(page).to have_link("Connect to Github")
+    expect(page).to have_button("Connect to Github")
+
+    stub_omniauth
+
+    click_button("Connect to Github")
+
+    expect(current_path).to eq(dashboard_path)
+
+    expect(page).to have_css('#repository', count: 5)
+    expect(page).to have_css('#following', count: 6)
+    expect(page).to have_css('#follower', count: 2)
   end
 end
 
