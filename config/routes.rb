@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
 
   namespace :admin do
+    get '/playlist/new', to: 'playlist#new'
+    post '/playlist', to: 'tutorials#create'
     get "/dashboard", to: "dashboard#show"
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
       resources :videos, only: [:create]
@@ -37,9 +39,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :update, :edit]
 
-  resources :tutorials, only: [:show, :index] do
+  resources :tutorials do
     resources :videos, only: [:show, :index]
   end
+
+  get 'auth/github', as: 'github'
+  get '/auth/github/callback', to: 'sessions#update'
 
   resources :user_videos, only:[:create, :destroy]
 end
