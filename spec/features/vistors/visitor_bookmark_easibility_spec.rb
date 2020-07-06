@@ -7,9 +7,9 @@ RSpec.describe 'As a visitor' do
 
     visit tutorial_path(tutorial)
 
-    expect(page).to have_link("User must login to bookmark video")
+    expect(page).to have_content("User must Login to bookmark video")
 
-    click_link("User must login to bookmark video")
+    click_link("Login")
 
     expect(current_path).to eq(login_path)
   end
