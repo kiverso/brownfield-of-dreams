@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  def show; end
+  def show
+    current_user.videos.order(:tutorial_id, :position)
+  end
 
   def new
     @user = User.new
