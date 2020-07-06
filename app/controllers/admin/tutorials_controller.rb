@@ -9,7 +9,7 @@ class Admin::TutorialsController < Admin::BaseController
       playlist_data = service.import_playlist(id)
       @playlist_video_data = service.import_playlist_items(id, nil)
 
-      @tutorial = Tutorial.create!(title: playlist_data[:title], description: playlist_data[:descripiton], thumbnail: playlist_data[:thumbnails][:default][:url], playlist_id: id)
+      @tutorial = Tutorial.create!(title: playlist_data[:title], description: playlist_data[:description], thumbnail: playlist_data[:thumbnails][:default][:url], playlist_id: id)
       @playlist_video_data[:items].each {|video| @tutorial.import_video(video)}
 
       while @playlist_video_data[:nextPageToken]
