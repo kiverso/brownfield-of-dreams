@@ -60,6 +60,7 @@ describe 'A registered user' do
     }.to change { UserVideo.count }.by(1)
 
     visit dashboard_path
+    
     within('.bookmarks') do
       expect(video3.title).to appear_before(video2.title)
       expect(video2.title).to appear_before(video.title)
