@@ -10,6 +10,9 @@
   </ul>
   <section class='bookmarks'>
     <h1>Bookmarked Segments</h1>
+    <% @bookmarks.each do |bookmark| %>
+      <p><%= bookmark.title %></p>
+    <% end %>
   </section>
   <% if current_user.token %>
     <section id='github'>

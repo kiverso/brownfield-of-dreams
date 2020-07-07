@@ -1,12 +1,19 @@
 class User < ApplicationRecord
   has_many :user_videos, dependent: :destroy
   has_many :videos, through: :user_videos
+  has_many :tutorials, through: :videos
 
   validates :email, uniqueness: true, presence: true
   validates :password, presence: true
   validates :first_name, presence: true
   enum role: { default: 0, admin: 1 }
   has_secure_password
+
+  def bookmarks
+    bookmarked = videos.joins(:tutorial).
+                 select("videos.title, videos.position, tutorials.title as t_title").
+                 order('t_title, videos.position')
+  end
 
   def find_repos
     github_service = GithubService.new

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    current_user.videos.order(:tutorial_id, :position)
+    @bookmarks = current_user.bookmarks
   end
 
   def new
