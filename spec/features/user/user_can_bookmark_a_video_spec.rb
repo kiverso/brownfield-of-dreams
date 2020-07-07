@@ -33,11 +33,11 @@ describe 'A registered user' do
   end
 
   it 'can show a user all their bookmarked videos' do
-    tutorial = create(:tutorial, title: "How to Tie Your Shoes")
+    tutorial1 = create(:tutorial, title: "How to Tie Your Shoes")
     tutorial2 = create(:tutorial, title: "How to do Another Thing")
     video = create(:video, title: "The Bunny Ears Technique", position: 2, tutorial: tutorial2)
     video2 = create(:video, title: "Another Technique", position: 1, tutorial: tutorial2)
-    video3 = create(:video, title: "Basic other thing", tutorial: tutorial)
+    video3 = create(:video, title: "Basic other thing", tutorial: tutorial1)
     user = create(:user)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -54,7 +54,7 @@ describe 'A registered user' do
       click_on 'Bookmark'
     }.to change { UserVideo.count }.by(1)
 
-    visit tutorial_path(tutorial)
+    visit tutorial_path(tutorial1)
     expect {
       click_on 'Bookmark'
     }.to change { UserVideo.count }.by(1)
