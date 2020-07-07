@@ -10,7 +10,12 @@
   </ul>
   <section class='bookmarks'>
     <h1>Bookmarked Segments</h1>
-    <% @bookmarks.each do |bookmark| %>
+    <% @bookmarks.each_with_index do |bookmark, index| %>
+      <% if index == 0 %>
+        <h2><%= bookmark.t_title %></h2>
+      <% elsif @bookmarks[index - 1].t_title != bookmark.t_title %>
+        <h2><%= bookmark.t_title %></h2>
+      <% end %>
       <p><%= bookmark.title %></p>
     <% end %>
   </section>
