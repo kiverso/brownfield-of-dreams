@@ -1,5 +1,5 @@
 class Tutorial < ApplicationRecord
-  validates_presence_of :title, :thumbnail
+  validates :title, :thumbnail, presence: true
   has_many :videos, -> { order(position: :ASC) }, inverse_of: :tutorial, dependent: :destroy
   acts_as_taggable_on :tags, :tag_list
   accepts_nested_attributes_for :videos
@@ -13,6 +13,10 @@ class Tutorial < ApplicationRecord
   end
 
   def import_video(video)
-    videos.create!(title: video[:snippet][:title], description: video[:snippet][:description], video_id: video[:snippet][:resourceId][:videoId], thumbnail: video[:snippet][:thumbnails][:default][:url], position: video[:snippet][:position])
+    videos.create!(title: video[:snippet][:title],
+                   description: video[:snippet][:description],
+                   video_id: video[:snippet][:resourceId][:videoId],
+                   thumbnail: video[:snippet][:thumbnails][:default][:url],
+                   position: video[:snippet][:position])
   end
 end

@@ -10,9 +10,10 @@ class User < ApplicationRecord
   has_secure_password
 
   def bookmarks
-    bookmarked = videos.joins(:tutorial).
-                 select("videos.title, videos.position, tutorials.title as t_title").
-                 order('t_title, videos.position')
+    videos.joins(:tutorial).select('videos.title,
+                                    videos.position,
+                                    tutorials.title as t_title')
+          .order('t_title, videos.position')
   end
 
   def find_repos

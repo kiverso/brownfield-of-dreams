@@ -64,6 +64,5 @@ describe 'A registered user' do
       expect(video3.title).to appear_before(video2.title)
       expect(video2.title).to appear_before(video.title)
     end
-    save_and_open_page
   end
 end
