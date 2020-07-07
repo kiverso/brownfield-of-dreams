@@ -13,7 +13,7 @@ class User < ApplicationRecord
     videos.joins(:tutorial).select('videos.title,
                                     videos.position,
                                     tutorials.title as t_title').
-                                    order('t_title, videos.position')
+                                    order('t_title ASC, videos.position ASC')
   end
 
   def find_repos
