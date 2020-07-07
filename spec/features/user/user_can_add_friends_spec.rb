@@ -10,8 +10,6 @@ RSpec.describe 'As a user that is connected to github in the system' do
   it 'I can add other users in the system that are also connected to Github' do
     visit dashboard_path
 
-    save_and_open_page
-
     within "#following-kiverso" do
       expect(page).to have_link("Add as Friend")
       click_link("Add Friend")
