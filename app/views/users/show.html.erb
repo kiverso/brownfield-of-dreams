@@ -42,12 +42,21 @@
             <% current_user.find_following.each do |following| %>
             <div id=<%="following-#{following.name}"%>>
               <%= link_to following.name, following.url, id: 'follow' %>
-              <%= if following.in_database? %>
-                <%= link_to "Add #{following.name} as Friend", '/friend', id: 'follow' %>
-
+              <% if following.in_database? %>
+                <%= link_to "Add #{following.name} as Friend", friendships_path(friend_url: following.url), method: :post %>
+              <% end %>
             </div>
             <% end %>
-        </div>
+          </div>
+    </section>
+    <section id='friends'>
+        <% if current_user.find_friends %>
+          <% current_user.find_friends.each do |friend| %>
+            <section id='friend'>
+            <%= link_to "#{friend.first_name} #{friend.last_name}", friend.url %>
+            </section>
+          <% end %>
+        <% end %>
     </section>
   <% end %>
 </section>
