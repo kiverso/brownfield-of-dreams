@@ -62,8 +62,8 @@ describe 'A registered user' do
     visit dashboard_path
     
     within('.bookmarks') do
-      expect(video3.title).to appear_before(video2.title)
-      expect(video2.title).to appear_before(video.title)
+      page.body.index(video3.title).should < page.body.index(video2.title) &&
+      page.body.index(video2.title).should < page.body.index(video.title)
     end
   end
 end
