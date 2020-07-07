@@ -34,6 +34,9 @@
             <% current_user.find_following.each do |following| %>
             <div id=<%="following-#{following.name}"%>>
               <%= link_to following.name, following.url, id: 'follow' %>
+              <%= if following.in_database? %>
+                <%= link_to "Add #{following.name} as Friend", '/friend', id: 'follow' %>
+
             </div>
             <% end %>
         </div>
