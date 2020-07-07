@@ -4,4 +4,8 @@ class Follow
     @name = name
     @url = url
   end
+
+  def in_database?
+    User.exists?(url: self.url)
+  end
 end
