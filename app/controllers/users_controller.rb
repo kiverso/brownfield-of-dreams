@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  def show; end
+  def show
+    @bookmarks = current_user.bookmarks
+  end
 
   def new
     @user = User.new

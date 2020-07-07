@@ -6,21 +6,22 @@ class YoutubeService
   end
 
   def import_playlist_items(id, token)
-    if token.nil?
-      params = { part: 'snippet', playlistId: id, maxResults: 50 }
-    else
-      params = { part: 'snippet', playlistId: id, maxResults: 50, pageToken: token }
-    end
+    params = if token.nil?
+               { part: 'snippet', playlistId: id, maxResults: 50 }
+             else
+               { part: 'snippet', playlistId: id, maxResults: 50, pageToken: token }
+             end
 
-    parsed = get_json('youtube/v3/playlistItems', params)
+    get_json('youtube/v3/playlistItems', params)
   end
 
   def import_playlist(id)
     params = { part: 'snippet', maxResults: 50, id: id }
 
     parsed = get_json('youtube/v3/playlists', params)
-    parser = parsed[:items][0][:snippet]
+    parsed[:items][0][:snippet]
   end
+
   private
 
   def get_json(url, params)
