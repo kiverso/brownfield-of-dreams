@@ -61,19 +61,26 @@ RSpec.describe User, type: :model do
                          first_name:'Jim', role: 0,
                          token: ENV["github_api_token_c"])
 
-      tutorial1 = create(:tutorial, title: "How to Tie Your Shoes")
-      tutorial2 = create(:tutorial, title: "How to do Another Thing")
-      video = create(:video, title: "The Bunny Ears Technique", position: 2, tutorial: tutorial2)
-      video2 = create(:video, title: "Another Technique", position: 1, tutorial: tutorial2)
-      video3 = create(:video, title: "Basic other thing", tutorial: tutorial1)
+      tutorial1 = create(:tutorial, title: "Abra-Kadabra")
+      tutorial2 = create(:tutorial, title: "Zookeeper")
+      video = create(:video, title: "Zebra man", position: 2, tutorial: tutorial2)
+      video2 = create(:video, title: "Anteater Monopoly", position: 1, tutorial: tutorial2)
+      video3 = create(:video, title: "All Things Magic", tutorial: tutorial1)
+      video4 = create(:video, title: "Magic School Bus", position: 2, tutorial: tutorial1)
+      video5 = create(:video, title: "Harry Potter", position: 1, tutorial: tutorial1)
+
+
 
       UserVideo.create(user_id: user.id, video_id: video.id )
       UserVideo.create(user_id: user.id, video_id: video2.id )
       UserVideo.create(user_id: user.id, video_id: video3.id )
+      UserVideo.create(user_id: user.id, video_id: video4.id )
+      UserVideo.create(user_id: user.id, video_id: video5.id )
 
       bookmarks = user.bookmarks
+
       expect(bookmarks.first.title).to eq(video3.title)
-      expect(bookmarks[1].title).to eq(video2.title)
+      expect(bookmarks[1].title).to eq(video5.title)
       expect(bookmarks.last.title).to eq(video.title)
     end
   end
