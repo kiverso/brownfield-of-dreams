@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'As a user that is connected to github in the system' do
   before(:each) do
-    @josh = User.create!(email: 'josh@example.com', first_name: 'Josh', last_name: 'Gilmore', password: '12345', token: ENV["github_api_token_c"])
+    @josh = User.create!(email: 'josh@example.com', first_name: 'Josh', last_name: 'Gilmore', password: '12345', url: 'https://github.com/cgaddis36', token: ENV["github_api_token_c"])
     @mike = User.create!(email: 'mike@example.com', first_name: 'Mike', last_name: 'Gonzalez', password: '1235')
-    @dione = User.create!(email: 'dione@example.com', first_name: 'Dione', last_name: 'Lopez', password: '123885', token: ENV["github_api_token_k"])
+    @dione = User.create!(email: 'dione@example.com', first_name: 'Dione', last_name: 'Lopez', password: '123885', url: 'https://github.com/kiverso', token: ENV["github_api_token_k"])
 
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@josh)
