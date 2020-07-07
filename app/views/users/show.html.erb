@@ -32,7 +32,7 @@
           <div id='user-following'>
             <h2>Following</h2>
             <% current_user.find_following.each do |following| %>
-            <div id='following'>
+            <div id=<%="following-#{following.name}"%>>
               <%= link_to following.name, following.url, id: 'follow' %>
             </div>
             <% end %>
