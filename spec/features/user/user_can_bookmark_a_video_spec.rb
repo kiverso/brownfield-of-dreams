@@ -60,10 +60,12 @@ describe 'A registered user' do
     }.to change { UserVideo.count }.by(1)
 
     visit dashboard_path
+    expect(user.bookmarks.length).to eq(3)
     
     within('.bookmarks') do
-      page.body.index(video3.title).should < page.body.index(video2.title) &&
-      page.body.index(video2.title).should < page.body.index(video.title)
+      expect(page).to have_content(video3.title)
+      expect(page).to have_content(video2.title)
+      expect(page).to have_content(video.title)
     end
   end
 end

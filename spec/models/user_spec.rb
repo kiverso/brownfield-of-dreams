@@ -55,5 +55,26 @@ RSpec.describe User, type: :model do
         expect(follow.url).to_not be_nil
       end
     end
+
+    it 'bookmarks' do
+      user = User.create(email: 'user@email.com', password: 'password',
+                         first_name:'Jim', role: 0,
+                         token: ENV["github_api_token_c"])
+
+      tutorial1 = create(:tutorial, title: "How to Tie Your Shoes")
+      tutorial2 = create(:tutorial, title: "How to do Another Thing")
+      video = create(:video, title: "The Bunny Ears Technique", position: 2, tutorial: tutorial2)
+      video2 = create(:video, title: "Another Technique", position: 1, tutorial: tutorial2)
+      video3 = create(:video, title: "Basic other thing", tutorial: tutorial1)
+
+      UserVideo.create(user_id: user.id, video_id: video.id )
+      UserVideo.create(user_id: user.id, video_id: video2.id )
+      UserVideo.create(user_id: user.id, video_id: video3.id )
+
+      bookmarks = user.bookmarks
+      expect(bookmarks.first.title).to eq(video3.title)
+      expect(bookmarks[1].title).to eq(video2.title)
+      expect(bookmarks.last.title).to eq(video.title)
+    end
   end
 end
