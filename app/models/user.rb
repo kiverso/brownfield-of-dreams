@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_many :user_videos, dependent: :destroy
   has_many :videos, through: :user_videos
   has_many :tutorials, through: :videos
+  has_many :friendships
+  has_many :friends, through: :friendships
 
   validates :email, uniqueness: true, presence: true
   validates :password, presence: true
@@ -40,5 +42,8 @@ class User < ApplicationRecord
     following_data.map do |follow|
       Follow.new(follow[:login], follow[:html_url])
     end
+  end
+  def find_friends
+    
   end
 end
