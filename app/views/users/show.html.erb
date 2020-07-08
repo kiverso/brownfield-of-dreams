@@ -32,8 +32,11 @@
           <div id='user-followers'>
             <h2>Followers</h2>
             <% current_user.find_followers.each do |follower| %>
-            <div id='follower'>
+            <div id=<%="follower-#{follower.name}"%>>
               <%= link_to follower.name, follower.url, id: 'follow' %>
+              <% if follower.in_database? %>
+                <%= link_to "Add #{follower.name} as Friend", friendships_path(friend_url: follower.url), method: :post %>
+              <% end %>
             </div>
             <% end %>
         </div>

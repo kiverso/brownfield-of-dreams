@@ -9,6 +9,8 @@ RSpec.describe 'As a logged in user, connected to github' do
 
     visit dashboard_path
 
-    expect(page).to have_css('#follower', count: 2)
+    expect(page).to have_content('kiverso')
+    expect(page).to have_content('meghanstovall')
+    expect(page).to have_content('KellyIB')
   end
 end

@@ -17,8 +17,12 @@ RSpec.describe 'as a logged in user' do
     expect(current_path).to eq(dashboard_path)
 
     expect(page).to have_css('#repository', count: 5)
-    expect(page).to have_css('#following', count: 6)
-    expect(page).to have_css('#follower', count: 2)
+    expect(page).to have_content('iandouglas')
+    expect(page).to have_content('KellyIB')
+    expect(page).to have_content('alerrian')
+    expect(page).to have_content('meghanstovall')
+    expect(page).to have_content('kiverso')
+    expect(page).to have_content('palworth')
   end
 end
 

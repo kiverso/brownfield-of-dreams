@@ -7,12 +7,34 @@ RSpec.describe 'As a user that is connected to github in the system' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@josh)
   end
-  it 'I can add other users in the system that are also connected to Github' do
+  it 'I can add other users in the system that are following on Github' do
     visit dashboard_path
+
+    within "#following-meghanstovall" do
+      expect(page).to_not have_link("Add meghanstovall as Friend")
+    end
 
     within "#following-kiverso" do
       expect(page).to have_link("Add kiverso as Friend")
       click_link("Add kiverso as Friend")
+    end
+
+    expect(page).to have_content("Successfully added Dione Lopez as a friend")
+
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_css('#friend', count: 1)
+  end
+
+  it 'I can add other users in the system that are also followers on Github' do
+    visit dashboard_path
+
+    within "#follower-kiverso" do
+      expect(page).to have_link("Add kiverso as Friend")
+      click_link("Add kiverso as Friend")
+    end
+
+    within "#follower-meghanstovall" do
+      expect(page).to_not have_link("Add meghanstovall as Friend")
     end
 
     expect(page).to have_content("Successfully added Dione Lopez as a friend")
