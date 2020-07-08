@@ -43,4 +43,8 @@ class User < ApplicationRecord
       Follow.new(follow[:login], follow[:html_url])
     end
   end
+
+  def confirm_email
+    update_attribute(:email_activation, 'Confirmed')
+  end
 end

@@ -12,6 +12,6 @@ class WelcomeController < ApplicationController
 
   def show
     user = User.find(params[:id].to_i)
-    user.update_attribute(:email_activation, 'Confirmed')
+    user.confirm_email
   end
 end

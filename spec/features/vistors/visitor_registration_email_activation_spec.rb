@@ -25,7 +25,7 @@ RSpec.describe 'As a guest' do
 
     expect(page).to have_content("Status: Inactive")
 
-    user.update_attribute(:email_activation,  "Confirmed")
+    user.confirm_email
 
     user.reload
 
