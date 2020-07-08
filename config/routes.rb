@@ -48,5 +48,7 @@ Rails.application.routes.draw do
 
   post '/friendships', to: 'friendships#create'
 
+  get '/activation/:id', to: 'welcome#show'
+
   resources :user_videos, only:[:create, :destroy]
 end

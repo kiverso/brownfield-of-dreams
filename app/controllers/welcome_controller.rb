@@ -9,4 +9,9 @@ class WelcomeController < ApplicationController
                            .paginate(page: params[:page], per_page: 5)
                  end
   end
+
+  def show
+    user = User.find(params[:id].to_i)
+    user.update_attribute(:email_activation, 'Confirmed')
+  end
 end
