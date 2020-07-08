@@ -43,7 +43,4 @@ class User < ApplicationRecord
       Follow.new(follow[:login], follow[:html_url])
     end
   end
-  def find_friends
-    
-  end
 end

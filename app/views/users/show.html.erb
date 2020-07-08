@@ -50,13 +50,14 @@
           </div>
     </section>
     <section id='friends'>
-        <% if current_user.find_friends %>
-          <% current_user.find_friends.each do |friend| %>
-            <section id='friend'>
+      <% unless current_user.friends.empty? %>
+        <h2>Friends</h2>
+        <% current_user.friends.each do |friend| %>
+          <section id='friend'>
             <%= link_to "#{friend.first_name} #{friend.last_name}", friend.url %>
-            </section>
-          <% end %>
+          </section>
         <% end %>
+      <% end %>
     </section>
   <% end %>
 </section>

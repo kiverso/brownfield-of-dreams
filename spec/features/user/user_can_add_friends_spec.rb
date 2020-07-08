@@ -18,7 +18,6 @@ RSpec.describe 'As a user that is connected to github in the system' do
     expect(page).to have_content("Successfully added Dione Lopez as a friend")
 
     expect(current_path).to eq(dashboard_path)
-require "pry"; binding.pry
     expect(page).to have_css('#friend', count: 1)
   end
 end
