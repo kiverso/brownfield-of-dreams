@@ -1,6 +1,11 @@
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
+  <% if current_user.email_activation == 'Confirmed' %>
+      <h2>Status: Active</h2>
+    <% else %>
+      <h2>Status: Inactive</h2>
+  <% end %>
   <%= button_to "Connect to Github", github_path %>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
