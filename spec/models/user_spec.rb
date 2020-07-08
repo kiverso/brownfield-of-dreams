@@ -83,5 +83,15 @@ RSpec.describe User, type: :model do
       expect(bookmarks[1].title).to eq(video5.title)
       expect(bookmarks.last.title).to eq(video.title)
     end
+
+    it 'confirm_email' do
+      user = create(:user)
+
+      expect(user.email_activation).to be_nil
+
+      user.confirm_email
+
+      expect(user.email_activation).to eq("Confirmed")
+    end
   end
 end
