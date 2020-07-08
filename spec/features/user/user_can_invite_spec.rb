@@ -13,7 +13,7 @@ RSpec.describe 'As a user that is connected to github in the system' do
 
     expect(current_path).to eq('/invite')
 
-    fill_in 'Github Handle', with: 'cgaddis36'
+    fill_in :invitee_github, with: 'cgaddis36'
     click_button 'Send Invite'
 
     expect(current_path).to eq(dashboard_path)
