@@ -13,8 +13,9 @@ RSpec.describe 'As a user that is connected to github in the system' do
 
     expect(current_path).to eq('/invite')
 
-    fill_in :invitee_github, with: 'cgaddis36'
-    click_button 'Send Invite'
+    fill_in :invitee_github, with: 'kiverso'
+    expect{
+    click_button 'Send Invite'}.to change { ActionMailer::Base.deliveries.count }.by(1)
 
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content('Successfully sent invite!')

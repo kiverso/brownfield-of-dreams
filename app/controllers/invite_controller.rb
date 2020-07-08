@@ -4,7 +4,12 @@ class InviteController < ApplicationController
   end
 
   def create
-    invitee_github = params[:invitee_github]
-    binding.pry
+    github_service = GithubService.new
+    recipient = github_service.get_json("users/#{params[:invitee_github]}", current_user)
+    inviter = github_service.get_json('user', current_user)
+    invite = Invite.new(inviter, recipient)
+    UserMailer.invite(invite).deliver_now
+    flash[:success] = 'Successfully sent invite!'
+    redirect_to dashboard_path
   end
 end
