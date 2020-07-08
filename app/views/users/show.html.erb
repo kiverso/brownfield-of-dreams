@@ -32,19 +32,35 @@
           <div id='user-followers'>
             <h2>Followers</h2>
             <% current_user.find_followers.each do |follower| %>
-            <div id='follower'>
+            <div id=<%="follower-#{follower.name}"%>>
               <%= link_to follower.name, follower.url, id: 'follow' %>
+              <% if follower.in_database? %>
+                <%= link_to "Add #{follower.name} as Friend", friendships_path(friend_url: follower.url), method: :post %>
+              <% end %>
             </div>
             <% end %>
         </div>
           <div id='user-following'>
             <h2>Following</h2>
             <% current_user.find_following.each do |following| %>
-            <div id='following'>
+            <div id=<%="following-#{following.name}"%>>
               <%= link_to following.name, following.url, id: 'follow' %>
+              <% if following.in_database? %>
+                <%= link_to "Add #{following.name} as Friend", friendships_path(friend_url: following.url), method: :post %>
+              <% end %>
             </div>
             <% end %>
-        </div>
+          </div>
+    </section>
+    <section id='friends'>
+      <% unless current_user.friends.empty? %>
+        <h2>Friends</h2>
+        <% current_user.friends.each do |friend| %>
+          <section id='friend'>
+            <%= link_to "#{friend.first_name} #{friend.last_name}", friend.url %>
+          </section>
+        <% end %>
+      <% end %>
     </section>
   <% end %>
 </section>
