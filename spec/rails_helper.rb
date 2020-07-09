@@ -58,6 +58,7 @@ end
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
+  config.default_cassette_options = { record: :new_episodes }
   config.filter_sensitive_data('<gihub_api_token_c>') { ENV['github_api_token_c'] }
   config.filter_sensitive_data('<gihub_api_token_k>') { ENV['github_api_token_k'] }
   config.filter_sensitive_data('<github_client_id>') { ENV['github_client_id'] }
