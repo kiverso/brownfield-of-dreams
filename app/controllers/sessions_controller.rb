@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     token = request.env['omniauth.auth'][:credentials][:token]
     url = request.env['omniauth.auth'][:extra][:raw_info][:html_url]
     
-    current_user.update_attributes(token: token, url: url)
+    current_user.update_columns(token: token, url: url)
     current_user.save
     flash[:success] = 'Connected to Github!'
     redirect_to dashboard_path
