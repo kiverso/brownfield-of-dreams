@@ -9,6 +9,7 @@ class GithubService
   end
 
   private
+
   def conn
     Faraday.new(url: 'https://api.github.com')
   end

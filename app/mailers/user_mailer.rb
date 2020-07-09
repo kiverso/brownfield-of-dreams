@@ -1,13 +1,12 @@
 class UserMailer < ApplicationMailer
-
   def invite(invite)
     @invite = invite
 
-    mail(to: @invite.recipient_email, subject:  'Invitation to join Turing Tutorials')
+    mail(to: @invite.recipient_email, subject: 'Invitation to join Turing Tutorials')
   end
-  
+
   def activation_email(user)
     @user = user
-    mail(to: @user.email, subject: "Youtube Emporium Activation Link")
+    mail(to: @user.email, subject: 'Youtube Emporium Activation Link')
   end
 end
