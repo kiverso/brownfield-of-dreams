@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_many :user_videos, dependent: :destroy
   has_many :videos, through: :user_videos
   has_many :tutorials, through: :videos
-  has_many :friendships
+  has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
 
   validates :email, uniqueness: true, presence: true
@@ -15,8 +15,8 @@ class User < ApplicationRecord
     videos.joins(:tutorial).select('videos.title,
                                     videos.position,
                                     tutorials.id as t_id,
-                                    tutorials.title as t_title').
-                                    order('t_id, videos.position')
+                                    tutorials.title as t_title')
+          .order('t_id, videos.position')
   end
 
   def find_repos
