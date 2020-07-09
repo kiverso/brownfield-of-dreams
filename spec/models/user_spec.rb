@@ -29,7 +29,7 @@ RSpec.describe User, type: :model do
     end
   end
   describe 'instance methods' do
-    it "find_repos" do
+    it "find_repos", :vcr do
       user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0, token: ENV["github_api_token_c"])
 
       expect(user.find_repos.count).to eq(5)
@@ -38,7 +38,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    it 'find_followers' do
+    it 'find_followers', :vcr do
       user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0, token: ENV["github_api_token_c"])
 
       user.find_followers.each do |follower|
@@ -48,7 +48,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    it 'find_followings' do
+    it 'find_followings', :vcr do
       user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0, token: ENV["github_api_token_c"])
 
       user.find_following.each do |follow|

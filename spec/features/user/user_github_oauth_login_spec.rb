@@ -5,7 +5,7 @@ RSpec.describe 'as a logged in user' do
     @user = User.create!(email: 'user@example.com', first_name: 'user1', last_name: 'Jenkins', password: '12345')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
-  it 'I can connect with my github account' do
+  it 'I can connect with my github account', :vcr do
     visit dashboard_path
 
     expect(page).to have_button("Connect to Github")

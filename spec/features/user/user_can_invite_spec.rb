@@ -6,7 +6,7 @@ RSpec.describe 'As a user that is connected to github in the system' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@josh)
   end
-  it 'I can invite other github users' do
+  it 'I can invite other github users', :vcr do
     visit dashboard_path
 
     click_link('Send an Invite')
@@ -21,7 +21,7 @@ RSpec.describe 'As a user that is connected to github in the system' do
     expect(page).to have_content('Successfully sent invite!')
   end
 
-  it 'will not send an email if there is no github email' do
+  it 'will not send an email if there is no github email', :vcr do
     visit dashboard_path
 
     click_link('Send an Invite')
@@ -37,7 +37,7 @@ RSpec.describe 'As a user that is connected to github in the system' do
     expect(page).to have_content(expected)
   end
 
-  it 'will not send an email if the github account does not exist' do
+  it 'will not send an email if the github account does not exist', :vcr do
     visit dashboard_path
 
     click_link('Send an Invite')
@@ -69,6 +69,3 @@ end
 # Hello <INVITEE_NAME_AS_IT_APPEARS_ON_GITHUB>,
 
 # <INVITER_NAME_AS_IT_APPEARS_ON_GITHUB> has invited you to join <YOUR_APP_NAME>. You can create an account <here (should be a link to /signup)>.
-
-
-

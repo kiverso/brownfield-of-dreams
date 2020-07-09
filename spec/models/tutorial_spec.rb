@@ -22,7 +22,7 @@ RSpec.describe Tutorial, type: :model do
       expect(Tutorial.authorized_for_viewer(user1)).to eq([tutorial1, tutorial2])
       expect(Tutorial.authorized_for_viewer(visitor)).to eq([tutorial2])
     end
-    it 'import_video' do
+    it 'import_video', :vcr do
       tutorial1 = create(:classroom_tutorial)
 
       admin = User.create!(email: 'admin@example.com', password: 'asdf123', first_name: 'admin1', role: 1)

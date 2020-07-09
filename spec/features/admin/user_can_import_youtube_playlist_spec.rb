@@ -4,7 +4,7 @@ RSpec.describe 'as an admin' do
   before(:each) do
     @admin = User.create!(email: 'admin@example.com', password: 'asdf123', first_name: 'admin1', role: 1)
   end
-  it 'can import a new youtube playlist' do
+  it 'can import a new youtube playlist', :vcr do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
     visit new_admin_tutorial_path
