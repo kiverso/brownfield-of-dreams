@@ -20,6 +20,38 @@ RSpec.describe 'As a user that is connected to github in the system' do
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content('Successfully sent invite!')
   end
+
+  it 'will not send an email if there is no github email' do
+    visit dashboard_path
+
+    click_link('Send an Invite')
+
+    expect(current_path).to eq('/invite')
+
+    fill_in :invitee_github, with: 'arpariseau'
+    expect{
+    click_button 'Send Invite'}.to change { ActionMailer::Base.deliveries.count }.by(0)
+
+    expect(current_path).to eq(dashboard_path)
+    expected = "The Github user you selected doesn't have an email address associated with their account."
+    expect(page).to have_content(expected)
+  end
+
+  it 'will not send an email if the github account does not exist' do
+    visit dashboard_path
+
+    click_link('Send an Invite')
+
+    expect(current_path).to eq('/invite')
+
+    fill_in :invitee_github, with: 'adsfwere'
+    expect{
+    click_button 'Send Invite'}.to change { ActionMailer::Base.deliveries.count }.by(0)
+
+    expect(current_path).to eq(dashboard_path)
+    expected = "The Github user you selected doesn't have an email address associated with their account."
+    expect(page).to have_content(expected)
+  end
 end
 
 # As a registered user
