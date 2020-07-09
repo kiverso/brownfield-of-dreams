@@ -1,0 +1,184 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/playlistItems?key=AIzaSyDgbwgRudWWlCBYUZLAHO8WK7ULKHjgLtY&maxResults=50&part=snippet&playlistId=PLJa35fj7DMyBB_BlY0Uwr4Ji1NlbvaVEi
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Thu, 09 Jul 2020 13:03:39 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-T050=":443";
+        ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "kind": "youtube#playlistItemListResponse",
+          "etag": "Rn6rdM-68PBTfvn7kKBdEB3dC58",
+          "items": [
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "-HpFnfcscBEzzZ7MyQdbSn1P7MI",
+              "id": "UExKYTM1Zmo3RE15QkJfQmxZMFV3cjRKaTFObGJ2YVZFaS41NkI0NEY2RDEwNTU3Q0M2",
+              "snippet": {
+                "publishedAt": "2020-07-03T15:36:27Z",
+                "channelId": "UCta_2NXipyE-lXjVTv5Sf5Q",
+                "title": "Variable Assignment in Ruby (Back-End)",
+                "description": "Back-End Instructor Tim Tyrrell shows how to do variable assignment in ruby",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/S-IeM4xnCog/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/S-IeM4xnCog/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/S-IeM4xnCog/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  }
+                },
+                "channelTitle": "Kyle Iverson",
+                "playlistId": "PLJa35fj7DMyBB_BlY0Uwr4Ji1NlbvaVEi",
+                "position": 0,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "S-IeM4xnCog"
+                }
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "aG1vYOlL3EizvanIp-p6qp0v6WE",
+              "id": "UExKYTM1Zmo3RE15QkJfQmxZMFV3cjRKaTFObGJ2YVZFaS4yODlGNEE0NkRGMEEzMEQy",
+              "snippet": {
+                "publishedAt": "2020-07-03T15:38:10Z",
+                "channelId": "UCta_2NXipyE-lXjVTv5Sf5Q",
+                "title": "Nested Iteration",
+                "description": "This is a backend module 1 class on nested iteration with instructor Tim Tyrrell.",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/-R6de1E6_k4/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/-R6de1E6_k4/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/-R6de1E6_k4/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/-R6de1E6_k4/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/-R6de1E6_k4/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "Kyle Iverson",
+                "playlistId": "PLJa35fj7DMyBB_BlY0Uwr4Ji1NlbvaVEi",
+                "position": 1,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "-R6de1E6_k4"
+                }
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "P4oKMMqQY0TZpQaXjoXNZr1rk5Y",
+              "id": "UExKYTM1Zmo3RE15QkJfQmxZMFV3cjRKaTFObGJ2YVZFaS4wMTcyMDhGQUE4NTIzM0Y5",
+              "snippet": {
+                "publishedAt": "2020-07-03T15:38:27Z",
+                "channelId": "UCta_2NXipyE-lXjVTv5Sf5Q",
+                "title": "Variable Assignment in JavaScript (Front-End)",
+                "description": "Technical Programs Instructor Amy Holt teaches how to do variable assignment in JavaScript",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/sIGNox7OGD0/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/sIGNox7OGD0/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/sIGNox7OGD0/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/sIGNox7OGD0/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/sIGNox7OGD0/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "Kyle Iverson",
+                "playlistId": "PLJa35fj7DMyBB_BlY0Uwr4Ji1NlbvaVEi",
+                "position": 2,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "sIGNox7OGD0"
+                }
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 3,
+            "resultsPerPage": 50
+          }
+        }
+  recorded_at: Thu, 09 Jul 2020 13:03:39 GMT
+recorded_with: VCR 6.0.0
