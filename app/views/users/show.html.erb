@@ -41,7 +41,7 @@
             <div id=<%="follower-#{follower.name}"%>>
               <%= link_to follower.name, follower.url, id: 'follow' %>
               <% if follower.in_database? %>
-                <%= link_to "Add #{follower.name} as Friend", friendships_path(friend_url: follower.url), method: :post %>
+                <%= button_to "Add #{follower.name} as Friend", friendships_path(friend_url: follower.url), method: :post %>
               <% end %>
             </div>
             <% end %>
@@ -52,7 +52,7 @@
             <div id=<%="following-#{following.name}"%>>
               <%= link_to following.name, following.url, id: 'follow' %>
               <% if following.in_database? %>
-                <%= link_to "Add #{following.name} as Friend", friendships_path(friend_url: following.url), method: :post %>
+                <%= button_to "Add #{following.name} as Friend", friendships_path(friend_url: following.url), method: :post %>
               <% end %>
             </div>
             <% end %>

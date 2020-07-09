@@ -6,6 +6,6 @@ class Follow
   end
 
   def in_database?
-    User.exists?(url: self.url)
+    User.exists?(url: url)
   end
 end

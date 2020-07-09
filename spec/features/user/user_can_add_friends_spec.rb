@@ -11,12 +11,12 @@ RSpec.describe 'As a user that is connected to github in the system' do
     visit dashboard_path
 
     within "#following-meghanstovall" do
-      expect(page).to_not have_link("Add meghanstovall as Friend")
+      expect(page).to_not have_button("Add meghanstovall as Friend")
     end
 
     within "#following-kiverso" do
-      expect(page).to have_link("Add kiverso as Friend")
-      click_link("Add kiverso as Friend")
+      expect(page).to have_button("Add kiverso as Friend")
+      click_button("Add kiverso as Friend")
     end
 
     expect(page).to have_content("Successfully added Dione Lopez as a friend")
@@ -29,12 +29,12 @@ RSpec.describe 'As a user that is connected to github in the system' do
     visit dashboard_path
 
     within "#follower-kiverso" do
-      expect(page).to have_link("Add kiverso as Friend")
-      click_link("Add kiverso as Friend")
+      expect(page).to have_button("Add kiverso as Friend")
+      click_button("Add kiverso as Friend")
     end
 
     within "#follower-meghanstovall" do
-      expect(page).to_not have_link("Add meghanstovall as Friend")
+      expect(page).to_not have_button("Add meghanstovall as Friend")
     end
 
     expect(page).to have_content("Successfully added Dione Lopez as a friend")
