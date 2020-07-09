@@ -38,7 +38,7 @@ Rails.application.configure do
   authentication:       'plain',
   enable_starttls_auto: true  }
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { :host => 'heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'sleepy-brushlands-02321.herokuapp.com' }
   # Compress JavaScripts and CSS.
   # config.assets.js_compressor = Uglifier.new(harmony: true)
   # config.assets.css_compressor = :sass
