@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'As an admin' do
-  it 'I can edit videos' do
+  it 'can not access edit videos path' do
     admin = create(:admin)
 
     tutorial1 = create(:tutorial, title: "Abra-Kadabra")
@@ -11,10 +11,9 @@ RSpec.describe 'As an admin' do
     video4 = create(:video, title: "Magic School Bus", tutorial: tutorial1)
     video5 = create(:video, title: "Harry Potter", tutorial: tutorial1)
 
-
-
-
-
-
+    expect{ visit "/admin/tutorials/#{tutorial1.id}/edit" }.to raise_error(ActionController::RoutingError)
+  end
+  it 'can not access edit videos path' do
+    visit '/get_started'
   end
 end
