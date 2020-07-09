@@ -10,16 +10,9 @@ class Admin::TutorialsController < Admin::BaseController
       @tutorial = Tutorial.create(tutorial_params)
     end
     if @tutorial.save
-      flash[:success] = "Successfully created tutorial. #{
-                        view_context.link_to 'View it here.', tutorial_path(@tutorial)}"
-      if params[:tutorial][:playlist_id]
-        redirect_to admin_dashboard_path
-      else
-        redirect_to tutorial_path(@tutorial)
-      end
+      successful_creation
     else
-      flash[:notice] = @tutorial.errors.full_messages.to_sentence
-      redirect_to '/admin/tutorials/new'
+      unsuccessful_creation
     end
   end
 
@@ -54,6 +47,21 @@ class Admin::TutorialsController < Admin::BaseController
       @playlist_video_data = service.import_playlist_items(id, @playlist_video_data[:nextPageToken])
       @playlist_video_data[:items].each { |video| @tutorial.import_video(video) }
     end
+  end
+
+  def successful_creation
+    flash[:success] = "Successfully created tutorial. #{
+                      view_context.link_to 'View it here.', tutorial_path(@tutorial)}"
+    if params[:tutorial][:playlist_id]
+      redirect_to admin_dashboard_path
+    else
+      redirect_to tutorial_path(@tutorial)
+    end
+  end
+
+  def unsuccessful_creation
+    flash[:notice] = @tutorial.errors.full_messages.to_sentence
+    redirect_to '/admin/tutorials/new'
   end
 
   def tutorial_params
