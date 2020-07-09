@@ -63,5 +63,6 @@ VCR.configure do |config|
   config.filter_sensitive_data('<gihub_api_token_k>') { ENV['github_api_token_k'] }
   config.filter_sensitive_data('<github_client_id>') { ENV['github_client_id'] }
   config.filter_sensitive_data('<github_client_secret>') { ENV['github_client_secret'] }
+  config.filter_sensitive_data('<YOUTUBE_API_KEY>') { ENV['YOUTUBE_API_KEY'] }
   config.configure_rspec_metadata!
 end
